@@ -4,10 +4,9 @@ import os
 
 commands_to_the_console = [
     "pyuic5 main_window.ui -o main_window.py",
-    "pyuic5 widget_1.ui -o widget_1.py",
-    "pyuic5 widget_2.ui -o widget_2.py",
-    "pyuic5 widget_3.ui -o widget_3.py",
-    "pyuic5 mw_1.ui -o mw_1.py",
+    "pyuic5 authorization.ui -o authorization.py",
+    "pyuic5 restore_password.ui -o restore_password.py",
+    "pyuic5 registration.ui -o registration.py",
     "",
     "",
     "",
