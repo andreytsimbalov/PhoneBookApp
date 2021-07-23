@@ -44,7 +44,7 @@
      <string>Имя пользователя</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="registration">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -57,7 +57,7 @@
      <string>Регистрация</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="enter">
     <property name="geometry">
      <rect>
       <x>190</x>
@@ -70,7 +70,7 @@
      <string>Войти</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QCheckBox" name="rememberMe">
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -83,7 +83,7 @@
      <string>Запомнить меня</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_2">
+   <widget class="QCheckBox" name="showPassword">
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -96,7 +96,7 @@
      <string>Показать пароль</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -118,7 +118,7 @@
      <set>Qt::LinksAccessibleByMouse</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="forgotPassword">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -131,7 +131,7 @@
      <string>Забыли пароль?</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
       <x>230</x>

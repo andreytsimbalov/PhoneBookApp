@@ -70,9 +70,10 @@ def main():
 
     # обработчик сигналов:
     # authorization_form
-    sub_widgets[0].ui.pushButton.clicked.connect(lambda: application.chooseSubwidget(2))
-    sub_widgets[0].ui.pushButton_4.clicked.connect(lambda: application.chooseSubwidget(1))
-    sub_widgets[0].ui.pushButton_3.clicked.connect(lambda: sub_widgets[0].ui.readValues())
+    sub_widgets[0].ui.registration.clicked.connect(lambda: application.chooseSubwidget(2))
+    sub_widgets[0].ui.forgotPassword.clicked.connect(lambda: application.chooseSubwidget(1))
+    sub_widgets[0].ui.enter.clicked.connect(lambda: sub_widgets[0].ui.readValues())
+    sub_widgets[0].ui.enter.clicked.connect(lambda: application.chooseSubwidget(3))
 
     # restore_password_form
     sub_widgets[1].ui.pushButton_2.clicked.connect(lambda: application.chooseSubwidget(0))

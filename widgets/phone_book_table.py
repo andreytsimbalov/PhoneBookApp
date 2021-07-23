@@ -58,7 +58,7 @@ class Ui_Form(object):
         # создание ComboBox
         batch_of_letters = 3
         letter_iterator = 0
-        a = ord('а')
+        a = ord('А')
         self.navigation_by_letter = []
         navigation_str = ''
         for i in range(a, a + 32):
