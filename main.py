@@ -41,6 +41,14 @@ class subwidget(QtWidgets.QWidget):
         self.ui.setupUi(self)
 
 
+def chooseSubwidget(subwidgetIndex):
+    if subwidgetIndex<0 or subwidgetIndex>len(windows):
+        print("subwidgetIndex out of range:", subwidgetIndex)
+        return
+    application.ui.stackedWidget.setCurrentIndex(subwidgetIndex)
+
+def asd():
+    print(1241241242)
 
 if __name__ == "__main__":
 
@@ -54,9 +62,10 @@ if __name__ == "__main__":
     sub_widgets = [subwidget(window) for window in windows]
 
     for sub_widget in sub_widgets:
-        # sub_widget = subwidget(window)
         application.ui.stackedWidget.addWidget(sub_widget.ui.widget)
-    application.ui.stackedWidget.setCurrentIndex(len(sub_widgets) - 1)
+    chooseSubwidget(len(sub_widgets) - 1)
+
+    sub_widgets[3].ui.pushButton.clicked.connect(lambda: chooseSubwidget(2))
 
     application.show()
     print("Finish")
