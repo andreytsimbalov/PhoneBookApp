@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>497</width>
-    <height>407</height>
+    <width>520</width>
+    <height>414</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
+     <x>19</x>
+     <y>19</y>
      <width>700</width>
-     <height>380</height>
+     <height>700</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -28,43 +28,71 @@
      <height>380</height>
     </size>
    </property>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>30</y>
-      <width>241</width>
-      <height>41</height>
+      <x>0</x>
+      <y>50</y>
+      <width>700</width>
+      <height>700</height>
      </rect>
     </property>
-    <property name="placeholderText">
-     <string>Адрес электронной почты</string>
+    <property name="minimumSize">
+     <size>
+      <width>700</width>
+      <height>700</height>
+     </size>
+    </property>
+    <property name="rowCount">
+     <number>3</number>
+    </property>
+    <property name="columnCount">
+     <number>3</number>
+    </property>
+    <row/>
+    <row/>
+    <row/>
+    <column/>
+    <column/>
+    <column/>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>80</y>
-      <width>161</width>
+      <x>170</x>
+      <y>0</y>
+      <width>171</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Сменить пароль</string>
+     <string>Добавить</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>80</y>
-      <width>161</width>
+      <x>350</x>
+      <y>0</y>
+      <width>171</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Отмена</string>
+     <string>Редактировать</string>
     </property>
    </widget>
   </widget>
