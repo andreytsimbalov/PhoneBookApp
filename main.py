@@ -4,6 +4,7 @@ import sys, os
 from PyQt5 import QtWidgets, QtCore
 from widgets import ui2py_file_converter
 import password_controller as pc
+import mariadb_controller as mc
 
 from widgets.main_window import Ui_MainWindow
 from widgets.authorization import Ui_Form as authorization_form
@@ -86,6 +87,7 @@ def main():
     app = QtWidgets.QApplication([])
     application = mainwindow()
     application.resize(application.width() * 2, application.height() * 2)
+    database = mc.database()
 
     sub_widgets = [subwidget(sub_widget_form) for sub_widget_form in sub_widget_forms]
 
