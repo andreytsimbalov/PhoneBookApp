@@ -36,6 +36,10 @@ class Ui_Form(object):
         self.dateEdit = QtWidgets.QDateEdit(self.widget)
         self.dateEdit.setGeometry(QtCore.QRect(240, 180, 221, 41))
         self.dateEdit.setObjectName("dateEdit")
+        self.label = QtWidgets.QLabel(self.widget)
+        self.label.setGeometry(QtCore.QRect(160, 280, 381, 71))
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -48,3 +52,4 @@ class Ui_Form(object):
         self.textEdit_3.setPlaceholderText(_translate("Form", "Повторите пароль"))
         self.pushButton.setText(_translate("Form", "Ок"))
         self.pushButton_2.setText(_translate("Form", "Отмена"))
+        self.label.setText(_translate("Form", "TextLabel"))

@@ -71,7 +71,6 @@ class Ui_Form(object):
         print(self.password.text())
 
     def changeShowPassword(self):
-        print("qweqweq")
         if self.showPassword.isChecked():
             self.password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Normal)
         else:

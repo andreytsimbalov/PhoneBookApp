@@ -78,6 +78,9 @@ class database():
 
 if __name__ == "__main__":
     db = database()
+
+    db.printSelectCommand(table_id=0)
+
     # # db.cur.execute("SELECT LEFT(name,1) FROM phone_contacts")
     # statement = "SELECT * FROM phone_contacts where (LEFT(name,1) > %s AND LEFT(name,1) < %s) AND (user_id = %s)"
     # data = ('k', 'z', 1)
@@ -88,12 +91,12 @@ if __name__ == "__main__":
     # for i in cur_res:
     #     print(i)
 
-    db.setUserId(1)
-    res = db.selectAlphabeticPart('ая')
-    print(res)
-    print(db.id)
-
-    db.printSelectCommand(table_id=1)
+    # db.setUserId(1)
+    # res = db.selectAlphabeticPart('ая')
+    # print(res)
+    # print(db.id)
+    #
+    # db.printSelectCommand(table_id=1)
 
 
 #
