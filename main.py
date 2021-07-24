@@ -14,6 +14,8 @@ class phonebook():
         self.application = mainwindow()
         self.application.resize(self.application.width() * 2, self.application.height() * 2)
         self.database_phone_book = mc.database()
+        self.personal_data = pc.passwordcontroller()
+        self.personal_data.loadLoginPassword()
 
         self.sub_widgets = [subwidget(sub_widget_form) for sub_widget_form in sub_widget_forms]
 
@@ -33,8 +35,7 @@ class phonebook():
         # authorization_form
         self.sub_widgets[0].ui.registration.clicked.connect(lambda: self.application.chooseSubwidget(2))
         self.sub_widgets[0].ui.forgotPassword.clicked.connect(lambda: self.application.chooseSubwidget(1))
-        # sub_widgets[0].ui.enter.clicked.connect(lambda: sub_widgets[0].ui.readValues())
-        self.sub_widgets[0].ui.enter.clicked.connect(lambda: self.login(self.sub_widgets[0].ui))
+        self.sub_widgets[0].ui.enter.clicked.connect(lambda: self.login())
 
         # restore_password_form
         self.sub_widgets[1].ui.pushButton_2.clicked.connect(lambda: self.application.chooseSubwidget(0))
@@ -66,23 +67,25 @@ class phonebook():
             self.sub_widgets[2].ui.label.setText("Данный пользователь уже существует")
             return
         else:
+            self.personal_data.setJsonForm(name, password, str(date.toPyDate()))
+            self.personal_data.saveLoginPassword()
             self.application.chooseSubwidget(0)
             self.sub_widgets[0].ui.label.setText("Аккаунт успешно создан")
 
-    def login(self, sub_widget_ui):
-        # work just for authorization_form
-
-        personal_data = pc.loadLoginPassword()
-        if personal_data['remember_me']:
+    def preLoginByDefault(self):
+        if self.personal_data.json_form['remember_me']:
             self.application.chooseSubwidget(3)
 
-        login_str = sub_widget_ui.textEdit.toPlainText()
-        password_str = sub_widget_ui.password.text()
-        rememberMe_flag = sub_widget_ui.rememberMe.isChecked()
+    def login(self):
+        # work just for authorization_form
 
-        # if login_str == "" or password_str == "":
-        #     sub_widget_ui.label.setText("Логин или пароль пусты")
-        #     return
+        login_str = self.sub_widgets[0].ui.textEdit.toPlainText()
+        password_str = self.sub_widgets[0].ui.password.text()
+        rememberMe_flag = self.sub_widgets[0].ui.rememberMe.isChecked()
+
+        if login_str == "" or password_str == "":
+            self.sub_widgets[0].ui.label.setText("Логин или пароль пусты")
+            return
 
         if login_str == personal_data['login'] and password_str == personal_data['password']:
             # sub_widget_ui.enter.clicked.connect(lambda: application.chooseSubwidget(3))
@@ -91,7 +94,7 @@ class phonebook():
                 pc.saveLoginPassword(personal_data)
             self.application.chooseSubwidget(3)
         else:
-            sub_widget_ui.label.setText("Логин или пароль неверны, повторите ввод")
+            self.sub_widgets[0].ui.label.setText("Логин или пароль неверны, повторите ввод")
 
 
 # def signalManager():
