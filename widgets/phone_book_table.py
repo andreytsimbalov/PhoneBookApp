@@ -73,6 +73,8 @@ class Ui_Form(object):
                 navigation_str = ''
                 letter_iterator = 0
 
+        self.navigation_by_letter.append("A..Z")
+        self.navigation_by_letter.append("0..9")
         for navigation_by_letter_i in self.navigation_by_letter:
             self.comboBox.addItem(navigation_by_letter_i)
 

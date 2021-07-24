@@ -4,6 +4,7 @@ import datetime
 
 class database():
     def __init__(self):
+        self.setUserId()
         try:
             self.connection = mariadb.connect(
                 user='root',
@@ -17,6 +18,16 @@ class database():
         except mariadb.Error as e:
             print(f"Error connecting to DB: {e}")
 
+    def printSelectCommand(self, str = "", table_id = 0):
+        if str == "":
+            table_dict = {
+                0: 'users',
+                1: 'phone_contacts',
+            }
+            str = "SELECT * FROM "+table_dict[table_id]
+        self.cur.execute(str)
+        for c in self.cur:
+            print(c)
 
     def addDataInUser(self, login, password, date_of_birth, remember_me=0):
         self.cur.execute("SELECT * FROM users WHERE (login, password, date_of_birth) = (%s,%s,%s)",
@@ -36,8 +47,8 @@ class database():
         return 0
 
     def addDataInPhoneContacts(self, user_id, name, phone_number, date_of_birth):
-        self.cur.execute("SELECT * FROM phone_contacts WHERE (name, phone_number, date_of_birth) = (%s,%s,%s)",
-                    (name, phone_number, date_of_birth))
+        self.cur.execute("SELECT * FROM phone_contacts WHERE (user_id, name, phone_number, date_of_birth) = (%s, %s,%s,%s)",
+                    (user_id, name, phone_number, date_of_birth))
         if self.cur.fetchone() != None:
             return 1
 
@@ -51,6 +62,39 @@ class database():
             print(f"Error adding entry to database: {e}")
 
         return 0
+
+    def setUserId(self, id = -1):
+        self.id = id
+
+    def selectAlphabeticPart(self, str):
+        statement = "SELECT * FROM phone_contacts where (LEFT(name,1) > %s AND LEFT(name,1) < %s) AND (user_id = %s)"
+        data = (str[0], str[-1], self.id)
+        self.cur.execute(statement, data)
+
+        res = []
+        for c in self.cur:
+            res.append(c)
+        return res
+
+if __name__ == "__main__":
+    db = database()
+    # # db.cur.execute("SELECT LEFT(name,1) FROM phone_contacts")
+    # statement = "SELECT * FROM phone_contacts where (LEFT(name,1) > %s AND LEFT(name,1) < %s) AND (user_id = %s)"
+    # data = ('k', 'z', 1)
+    # db.cur.execute(statement, data)
+    #
+    # # db.cur.execute("SELECT * FROM phone_contacts where (LEFT(name,1) > 'k' AND LEFT(name,1) < 'z') AND (id = 2)",)
+    # cur_res = db.cur
+    # for i in cur_res:
+    #     print(i)
+
+    db.setUserId(1)
+    res = db.selectAlphabeticPart('ая')
+    print(res)
+    print(db.id)
+
+    db.printSelectCommand(table_id=1)
+
 
 #
 # # cur.execute("SELECT * FROM users WHERE id=2")

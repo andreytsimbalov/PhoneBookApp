@@ -2,51 +2,10 @@
 
 import sys, os
 from PyQt5 import QtWidgets, QtCore
+import widget_classes as wc
 from widgets import ui2py_file_converter
 import password_controller as pc
 import mariadb_controller as mc
-
-from widgets.main_window import Ui_MainWindow
-from widgets.authorization import Ui_Form as authorization_form
-from widgets.restore_password import Ui_Form as restore_password_form
-from widgets.registration import Ui_Form as registration_form
-from widgets.phone_book_table import Ui_Form as phone_book_table
-from widgets.widget_3 import Ui_Form as ui_form_w3
-# from widgets.mw_1 import Ui_MainWindow as ui_mw_1
-
-sub_widget_forms = [
-    authorization_form,
-    restore_password_form,
-    registration_form,
-    phone_book_table,
-
-]
-
-class mainwindow(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(mainwindow, self).__init__()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-
-    def resizeEvent(self, event):
-        x = self.size().width()
-        y = self.size().height()
-        self.ui.horizontalLayoutWidget.resize(x, y)
-
-    def chooseSubwidget(self, subwidgetIndex):
-        if subwidgetIndex < 0 or subwidgetIndex > len(sub_widget_forms):
-            print("subwidgetIndex out of range:", subwidgetIndex)
-            return
-        self.ui.stackedWidget.setCurrentIndex(subwidgetIndex)
-        print("Open", subwidgetIndex, "window")
-
-
-class subwidget(QtWidgets.QWidget):
-    def __init__(self, Ui_Form):
-        super(subwidget, self).__init__()
-        self.ui = Ui_Form()
-        self.ui.setupUi(self)
-
 
 def login(sub_widget_ui, application):
     # work just for authorization_form
@@ -87,7 +46,7 @@ def main():
     app = QtWidgets.QApplication([])
     application = mainwindow()
     application.resize(application.width() * 2, application.height() * 2)
-    database = mc.database()
+    database_phone_book = mc.database()
 
     sub_widgets = [subwidget(sub_widget_form) for sub_widget_form in sub_widget_forms]
 
