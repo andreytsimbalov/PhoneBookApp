@@ -21,7 +21,7 @@ class phonebook():
 
         for sub_widget in self.sub_widgets:
             self.application.ui.stackedWidget.addWidget(sub_widget.ui.widget)
-        self.application.chooseSubwidget(3)
+        self.preLoginByDefault()
 
         self.signalManager()
 
@@ -53,6 +53,7 @@ class phonebook():
         password = self.sub_widgets[2].ui.textEdit_2.toPlainText()
         password_2 = self.sub_widgets[2].ui.textEdit_3.toPlainText()
         date = self.sub_widgets[2].ui.dateEdit.date()
+        print(123123123)
 
         if name=='' or password=='' or password_2 == '':
             self.sub_widgets[2].ui.label.setText("Данные введены не полностью")
@@ -61,12 +62,14 @@ class phonebook():
         if password != password_2:
             self.sub_widgets[2].ui.label.setText("Пароли не совпадают")
             return
+        print(123123123)
 
-        res = self.database_phone_book.addDataInUser(name, password, date.toPyDate(), remember_me=0)
+        res = self.database_phone_book.addDataInUser(name, password, date.toPyDate())
         if res==1:
             self.sub_widgets[2].ui.label.setText("Данный пользователь уже существует")
             return
         else:
+            print(123123123)
             self.personal_data.setJsonForm(name, password, str(date.toPyDate()))
             self.personal_data.saveLoginPassword()
             self.application.chooseSubwidget(0)
@@ -79,22 +82,27 @@ class phonebook():
     def login(self):
         # work just for authorization_form
 
-        login_str = self.sub_widgets[0].ui.textEdit.toPlainText()
-        password_str = self.sub_widgets[0].ui.password.text()
-        rememberMe_flag = self.sub_widgets[0].ui.rememberMe.isChecked()
+        login = self.sub_widgets[0].ui.textEdit.toPlainText()
+        password = self.sub_widgets[0].ui.password.text()
+        rememberMe = self.sub_widgets[0].ui.rememberMe.isChecked()
 
-        if login_str == "" or password_str == "":
+        if login == "" or password == "":
             self.sub_widgets[0].ui.label.setText("Логин или пароль пусты")
             return
 
-        if login_str == personal_data['login'] and password_str == personal_data['password']:
-            # sub_widget_ui.enter.clicked.connect(lambda: application.chooseSubwidget(3))
-            if rememberMe_flag:
-                personal_data['remember_me'] = rememberMe_flag
-                pc.saveLoginPassword(personal_data)
+        self.database_phone_book.cur.execute(
+            "SELECT * FROM users WHERE (login, password) = (%s,%s)",
+            (login, password))
+        user_in_db = self.database_phone_book.cur.fetchone()
+        if user_in_db != None:
+            self.personal_data.setJsonForm(login, password, str(user_in_db[2]), rememberMe)
+            self.personal_data.saveLoginPassword()
             self.application.chooseSubwidget(3)
+
         else:
-            self.sub_widgets[0].ui.label.setText("Логин или пароль неверны, повторите ввод")
+            self.sub_widgets[0].ui.label.setText("Данный пользователь не найден")
+
+
 
 
 # def signalManager():

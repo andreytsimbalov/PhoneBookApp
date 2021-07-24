@@ -18,7 +18,7 @@ class database():
         except mariadb.Error as e:
             print(f"Error connecting to DB: {e}")
 
-    def printSelectCommand(self, str = "", table_id = 0):
+    def takeSelectCommand(self, str = "", table_id = 0):
         if str == "":
             table_dict = {
                 0: 'users',
@@ -26,18 +26,25 @@ class database():
             }
             str = "SELECT * FROM "+table_dict[table_id]
         self.cur.execute(str)
+        res = []
         for c in self.cur:
-            print(c)
+            res.append(c)
+        return res
 
-    def addDataInUser(self, login, password, date_of_birth, remember_me=0):
-        self.cur.execute("SELECT * FROM users WHERE (login, password, date_of_birth) = (%s,%s,%s)",
-                    (login, password, date_of_birth))
+    def printSelectCommand(self, str = "", table_id = 0):
+        res = self.takeSelectCommand(str,table_id)
+        for r in res:
+            print(r)
+
+    def addDataInUser(self, login, password, date_of_birth):
+        self.cur.execute("SELECT * FROM users WHERE (login, password) = (%s,%s)",
+                    (login, password))
         if self.cur.fetchone() != None:
             return 1
 
         try:
-            statement = "INSERT INTO users (login, password, date_of_birth, remember_me) VALUES (%s, %s, %s, %s)"
-            data = (login, password, date_of_birth, remember_me)
+            statement = "INSERT INTO users (login, password, date_of_birth) VALUES (%s, %s, %s)"
+            data = (login, password, date_of_birth)
             self.cur.execute(statement, data)
             self.connection.commit()
             print("Successfully added entry to database in users")
@@ -79,7 +86,15 @@ class database():
 if __name__ == "__main__":
     db = database()
 
-    db.printSelectCommand(table_id=0)
+    users = db.printSelectCommand(table_id=0)
+
+
+    # db.cur.execute("ALTER TABLE users    DROP    COLUMN    remember_me")
+    # db.connection.commit()
+
+    # db.cur.execute("delete from users")
+    # db.connection.commit()
+
 
     # # db.cur.execute("SELECT LEFT(name,1) FROM phone_contacts")
     # statement = "SELECT * FROM phone_contacts where (LEFT(name,1) > %s AND LEFT(name,1) < %s) AND (user_id = %s)"
