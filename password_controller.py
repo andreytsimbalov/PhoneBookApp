@@ -15,5 +15,5 @@ json_form = {
     'date_of_birth': 0,
     'remember_me': False
 }
-saveLoginPassword(json_form)
-print(loadLoginPassword())
+# saveLoginPassword(json_form)
+# print(loadLoginPassword())

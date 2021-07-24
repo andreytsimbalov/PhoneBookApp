@@ -34,6 +34,9 @@ class Ui_Form(object):
         self.pushButton_2 = QtWidgets.QPushButton(self.widget)
         self.pushButton_2.setGeometry(QtCore.QRect(350, 0, 171, 41))
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(self.widget)
+        self.pushButton_3.setGeometry(QtCore.QRect(530, 0, 171, 41))
+        self.pushButton_3.setObjectName("pushButton_3")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -50,6 +53,7 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton.setText(_translate("Form", "Добавить"))
         self.pushButton_2.setText(_translate("Form", "Редактировать"))
+        self.pushButton_3.setText(_translate("Form", "Сменить пользователя"))
 
     def addButtonClicked(self):
         print(123)
