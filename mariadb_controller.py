@@ -90,10 +90,36 @@ if __name__ == "__main__":
     db.printSelectCommand(table_id=0)
     print()
     print("phone_contacts")
-
     db.printSelectCommand(table_id=1)
+    print()
 
 
+    # db.printSelectCommand("SELECT DATE_FORMAT(CURDATE()+ INTERVAL 7 DAY, '%m-%d')>'07-01' FROM phone_contacts")
+
+    db.printSelectCommand("SELECT * FROM phone_contacts "
+                          "WHERE DATE_FORMAT(date_of_birth + INTERVAL 7 DAY, '%m-%d')<=DATE_FORMAT(CURDATE(), '%m-%d') "
+                          "AND DATE_FORMAT(date_of_birth, '%m-%d')>=DATE_FORMAT(CURDATE(), '%m-%d')")
+    #
+    # db.printSelectCommand("SELECT * YEAR FROM phone_contacts "7
+    #                       "WHERE date_of_birth + INTERVAL YEAR(CURDATE())-YEAR(date_of_birth)>=CURDATE()")
+
+    db.printSelectCommand("SELECT * FROM phone_contacts "
+                          "WHERE DATE_FORMAT(date_of_birth, '%m-%d')<=DATE_FORMAT(CURDATE() + INTERVAL 7 DAY, '%m-%d') ")
+
+    print('--')
+    db.printSelectCommand("SELECT * FROM phone_contacts "
+                          "WHERE DATE_FORMAT(date_of_birth, '%m-%d')>=DATE_FORMAT(CURDATE(), '%m-%d') ")
+
+    # db.cur.execute("SELECT * FROM phone_contacts "
+    #                       "WHERE DATE_FORMAT(date_of_birth + INTERVAL 7 DAY, '%m-%d')<=DATE_FORMAT(CURDATE(), '%m-%d') ")
+    # res = db.cur.fetchone()
+    # print(res)
+
+
+    #
+    #  AND "
+    #                           "WHERE date_of_birth + INTERVAL YEAR(CURDATE())-YEAR(date_of_birth)<=CURDATE() + INTERVAL 7 DAY
+    #
     # db.cur.execute("ALTER TABLE users    DROP    COLUMN    remember_me")
     # db.connection.commit()
 

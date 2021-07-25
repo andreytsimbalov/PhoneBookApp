@@ -52,4 +52,4 @@ class Ui_Form(object):
         self.textEdit_3.setPlaceholderText(_translate("Form", "Повторите пароль"))
         self.pushButton.setText(_translate("Form", "Ок"))
         self.pushButton_2.setText(_translate("Form", "Отмена"))
-        self.label.setText(_translate("Form", "TextLabel"))
+        self.label.setText(_translate("Form", ""))

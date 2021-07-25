@@ -1,6 +1,5 @@
 # main.py запускает приложение
 
-from widgets import ui2py_file_converter
 from phone_book import *
 
 def qwe():

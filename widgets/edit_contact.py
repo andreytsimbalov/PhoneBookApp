@@ -56,7 +56,7 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.lineEdit.setPlaceholderText(_translate("Form", "Имя"))
         self.lineEdit_2.setPlaceholderText(_translate("Form", "Телефон"))
-        self.pushButton.setText(_translate("Form", "Добавить"))
+        self.pushButton.setText(_translate("Form", "Редактировать"))
         self.pushButton_2.setText(_translate("Form", "Отмена"))
         self.pushButton_3.setText(_translate("Form", "Удалить"))
 

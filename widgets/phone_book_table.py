@@ -20,8 +20,8 @@ class Ui_Form(object):
         self.widget.setObjectName("widget")
         self.tableWidget = QtWidgets.QTableWidget(self.widget)
         self.tableWidget.setEnabled(True)
-        self.tableWidget.setGeometry(QtCore.QRect(0, 50, 700, 700))
-        self.tableWidget.setMinimumSize(QtCore.QSize(700, 700))
+        self.tableWidget.setGeometry(QtCore.QRect(0, 50, 700, 670))
+        self.tableWidget.setMinimumSize(QtCore.QSize(700, 670))
         self.tableWidget.setRowCount(3)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
@@ -37,6 +37,11 @@ class Ui_Form(object):
         self.pushButton_3 = QtWidgets.QPushButton(self.widget)
         self.pushButton_3.setGeometry(QtCore.QRect(530, 0, 171, 41))
         self.pushButton_3.setObjectName("pushButton_3")
+        self.label = QtWidgets.QLabel(self.widget)
+        self.label.setGeometry(QtCore.QRect(180, 720, 351, 41))
+        self.label.setText("")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -47,6 +52,7 @@ class Ui_Form(object):
         self.createComboBox()
         # self.comboBox.activated[str].connect(self.chooseComboBoxItem)
         # self.pushButton.clicked.connect(self.addButtonClicked)
+
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -77,6 +83,8 @@ class Ui_Form(object):
         self.navigation_by_letter.append("0..9")
         for navigation_by_letter_i in self.navigation_by_letter:
             self.comboBox.addItem(navigation_by_letter_i)
+
+        # print(self.comboBox.itemText(0))
 
     # def chooseComboBoxItem(self, str):
     #     print(str)
