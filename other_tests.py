@@ -11,5 +11,12 @@ def changeShowPassword(self):
 
 
 # for add/edit_contact
-self.onlyInt = QtGui.QIntValidator()
-self.lineEdit_2.setValidator(self.onlyInt)
+def restrictionsLineEdit(self):
+    self.onlyInt = QtGui.QIntValidator()
+    self.lineEdit_2.setValidator(self.onlyInt)
+    self.lineEdit_2.setMaxLength(11)
+
+    reg = QtCore.QRegExp("[а-яА-Я]{32}")
+    pValidator = QtGui.QRegExpValidator()
+    pValidator.setRegExp(reg)
+    self.lineEdit.setValidator(pValidator)

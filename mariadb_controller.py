@@ -86,14 +86,24 @@ class database():
 if __name__ == "__main__":
     db = database()
 
-    users = db.printSelectCommand(table_id=1)
+    print("users")
+    db.printSelectCommand(table_id=0)
+    print()
+    print("phone_contacts")
+
+    db.printSelectCommand(table_id=1)
 
 
     # db.cur.execute("ALTER TABLE users    DROP    COLUMN    remember_me")
     # db.connection.commit()
 
+    # db.cur.execute("delete from phone_contacts")
+    # db.connection.commit()
+    #
     # db.cur.execute("delete from users")
     # db.connection.commit()
+
+
 
 
     # # db.cur.execute("SELECT LEFT(name,1) FROM phone_contacts")

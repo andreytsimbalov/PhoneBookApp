@@ -45,10 +45,6 @@ class Ui_Form(object):
         self.lineEdit_2.setValidator(self.onlyInt)
         self.lineEdit_2.setMaxLength(32)
 
-        reg = QtCore.QRegExp("[а-яА-Я]{32}")
-        pValidator = QtGui.QRegExpValidator()
-        pValidator.setRegExp(reg)
-        self.lineEdit.setValidator(pValidator)
 
         self.restrictionsLineEdit()
 
@@ -64,11 +60,7 @@ class Ui_Form(object):
         self.pushButton_2.setText(_translate("Form", "Отмена"))
 
     def restrictionsLineEdit(self):
-        self.onlyInt = QtGui.QIntValidator()
-        self.lineEdit_2.setValidator(self.onlyInt)
-        self.lineEdit_2.setMaxLength(11)
+        self.lineEdit.setMaxLength(11)
 
-        reg = QtCore.QRegExp("[а-яА-Я]{32}")
-        pValidator = QtGui.QRegExpValidator()
-        pValidator.setRegExp(reg)
-        self.lineEdit.setValidator(pValidator)
+        self.lineEdit_2.setValidator(QtGui.QIntValidator())
+        self.lineEdit_2.setMaxLength(11)

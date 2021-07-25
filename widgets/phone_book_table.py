@@ -45,7 +45,7 @@ class Ui_Form(object):
         # вспомогательный код
         self.createTable()
         self.createComboBox()
-        self.comboBox.activated[str].connect(self.chooseComboBoxItem)
+        # self.comboBox.activated[str].connect(self.chooseComboBoxItem)
         # self.pushButton.clicked.connect(self.addButtonClicked)
 
     def retranslateUi(self, Form):
@@ -53,7 +53,7 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton.setText(_translate("Form", "Добавить"))
         self.pushButton_2.setText(_translate("Form", "Редактировать"))
-        self.pushButton_3.setText(_translate("Form", "Сменить пользователя"))
+        self.pushButton_3.setText(_translate("Form", "Сменить аккаунт"))
 
     def addButtonClicked(self):
         print(123)
@@ -78,9 +78,9 @@ class Ui_Form(object):
         for navigation_by_letter_i in self.navigation_by_letter:
             self.comboBox.addItem(navigation_by_letter_i)
 
-    def chooseComboBoxItem(self, str):
-        print(str)
-        pass
+    # def chooseComboBoxItem(self, str):
+    #     print(str)
+    #     pass
 
     def changeCell(self, i, j, var=""):
         item = QtWidgets.QTableWidgetItem()
@@ -88,8 +88,8 @@ class Ui_Form(object):
         item.setFlags(QtCore.Qt.ItemIsEnabled)
         self.tableWidget.setItem(i, j, item)
 
-    def addCurve(self, i, curveStr = []):
-        for j in range(min(len(curveStr), self.tableWidget.columnCount())):
+    def addCurve(self, i, curveStr = ["","",""]):
+        for j in range(self.tableWidget.columnCount()):
             self.changeCell(i, j, curveStr[j])
 
     def createTable(self):
