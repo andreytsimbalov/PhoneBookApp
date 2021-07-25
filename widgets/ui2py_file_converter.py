@@ -15,14 +15,14 @@ commands_to_the_console = [
     "",
 ]
 
-def convert(path = ""):
+def convert(path_input = "", path_output = ""):
     for command in commands_to_the_console:
         if command == "":
             continue
         comm_split = command.split()
         # print(comm_split)
-        comm_split[1] = path + comm_split[1]
-        comm_split[3] = path + comm_split[3]
+        comm_split[1] = path_input + comm_split[1]
+        comm_split[3] = path_output + comm_split[3]
         command_new = ""
         for comm_split_i in comm_split:
             command_new+=comm_split_i + " "
