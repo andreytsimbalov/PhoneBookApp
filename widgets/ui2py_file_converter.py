@@ -8,6 +8,8 @@ commands_to_the_console = [
     # "pyuic5 restore_password.ui -o restore_password.py",
     # "pyuic5 registration.ui -o registration.py",
     # "pyuic5 phone_book_table.ui -o phone_book_table.py",
+    # "pyuic5 add_contact.ui -o add_contact.py",
+    # "pyuic5 edit_contact.ui -o edit_contact.py",
     "",
     "",
     "",

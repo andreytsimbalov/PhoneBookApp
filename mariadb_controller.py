@@ -86,7 +86,7 @@ class database():
 if __name__ == "__main__":
     db = database()
 
-    users = db.printSelectCommand(table_id=0)
+    users = db.printSelectCommand(table_id=1)
 
 
     # db.cur.execute("ALTER TABLE users    DROP    COLUMN    remember_me")

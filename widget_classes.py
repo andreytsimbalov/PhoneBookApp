@@ -3,13 +3,17 @@ from widgets.main_window import Ui_MainWindow
 from widgets.authorization import Ui_Form as authorization_form
 from widgets.restore_password import Ui_Form as restore_password_form
 from widgets.registration import Ui_Form as registration_form
-from widgets.phone_book_table import Ui_Form as phone_book_table
+from widgets.phone_book_table import Ui_Form as phone_book_table_form
+from widgets.add_contact import Ui_Form as add_contact_form
+from widgets.edit_contact import Ui_Form as edit_contact_form
 
 sub_widget_forms = [
     authorization_form,
     restore_password_form,
     registration_form,
-    phone_book_table,
+    phone_book_table_form,
+    add_contact_form,
+    edit_contact_form,
 
 ]
 

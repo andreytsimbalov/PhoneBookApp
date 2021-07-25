@@ -6,8 +6,9 @@ class passwordcontroller():
 
 
 
-    def setJsonForm(self, login='', password='', date_of_birth='2000-01-01', remember_me=False):
+    def setJsonForm(self, id=-1, login='', password='', date_of_birth='2000-01-01', remember_me=False):
         self.json_form = {
+            "id": id,
             'login': login,
             'password': password,
             'date_of_birth': date_of_birth,
@@ -32,6 +33,7 @@ json_form = {
 }
 
 # {
+#     "id": -1,
 #     "login": "asd",
 #     "password": "asd",
 #     "date_of_birth": "",

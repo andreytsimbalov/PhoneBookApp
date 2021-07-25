@@ -8,3 +8,8 @@ def changeShowPassword(self):
         self.password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Normal)
     else:
         self.password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
+
+
+# for add/edit_contact
+self.onlyInt = QtGui.QIntValidator()
+self.lineEdit_2.setValidator(self.onlyInt)
