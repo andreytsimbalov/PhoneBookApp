@@ -1,7 +1,7 @@
 {
-    "user": "root",
-    "password": "admin123",
+    "user": "user",
+    "password": "password",
     "host":"localhost",
     "port":"3306",
-    "database":"phonebook5"
+    "database":"phonebook"
 }
