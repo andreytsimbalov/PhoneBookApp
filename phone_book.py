@@ -1,8 +1,10 @@
+# phonebook-class is main window of application
+
 import sys, os
 from PyQt5 import QtWidgets, QtCore
 from widget_classes import *
 import password_controller as pc
-import mariadb_controller as mc
+import mysqldb_controller as mc
 
 from widgets import ui2py_file_converter
 
@@ -61,9 +63,13 @@ class phonebook():
 
     def birthMessage(self):
         print(123123123123)
-        birth_contacts = self.database_phone_book.takeSelectCommand("SELECT * FROM phone_contacts "
-                              "WHERE DATE_FORMAT(date_of_birth, '%m-%d')<=DATE_FORMAT(CURDATE() + INTERVAL 7 DAY, '%m-%d') "
-                              "AND DATE_FORMAT(date_of_birth, '%m-%d')>=DATE_FORMAT(CURDATE(), '%m-%d')")
+        print(self.personal_data.json_form)
+        command = "SELECT * FROM phone_contacts " \
+                  "WHERE DATE_FORMAT(date_of_birth, '%m-%d')<=DATE_FORMAT(CURDATE() + INTERVAL 7 DAY, '%m-%d') " \
+                  "AND DATE_FORMAT(date_of_birth, '%m-%d')>=DATE_FORMAT(CURDATE(), '%m-%d') " \
+                  "AND user_id = " + str(self.personal_data.json_form['id'])
+        print(command)
+        birth_contacts = self.database_phone_book.takeSelectCommand(command)
         print(birth_contacts)
 
         if len(birth_contacts)!=0:
