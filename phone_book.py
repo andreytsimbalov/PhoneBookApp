@@ -6,9 +6,6 @@ from widget_classes import *
 import password_controller as pc
 import mysqldb_controller as mc
 
-from widgets import ui2py_file_converter
-
-
 class phonebook():
     def __init__(self):
         self.app = QtWidgets.QApplication([])
