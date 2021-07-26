@@ -223,9 +223,3 @@ class phonebook():
             self.sub_widgets[0].ui.label.setText("Данный пользователь не найден")
 
 
-if __name__ == "__main__":
-    print("Start")
-    ui2py_file_converter.convert("widgets/")
-
-    phone_book = phonebook()
-    phone_book.startApp()
