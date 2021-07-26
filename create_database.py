@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     try:
         cur.execute("CREATE DATABASE " + sql_data['database'])
-        print("Database", sql_data['database'], "created")
+        print("Success database", sql_data['database'], "created")
         connection.commit()
     except:
         print("Database", sql_data['database'], "was created earlier")
@@ -33,6 +33,23 @@ if __name__ == "__main__":
         database=sql_data['database']
     )
     cur = connection.cursor(buffered=True)
+
+
+    try:
+        # create users
+        command = "CREATE TABLE `users` (" \
+                  "`login` varchar(32) NOT NULL," \
+                  "`password` varchar(32) NOT NULL," \
+                  "`date_of_birth` date NOT NULL," \
+                  "`id` int NOT NULL AUTO_INCREMENT," \
+                  "PRIMARY KEY (`id`)" \
+                  ")"
+        cur.execute(command)
+        connection.commit()
+        print("Success create users table")
+
+    except:
+        print("Table users was created earlier")
 
     try:
         # create phone_contacts
@@ -49,22 +66,10 @@ if __name__ == "__main__":
 
         cur.execute(command)
         connection.commit()
+        print("Success create phone_contacts table")
     except:
         print("Table phone_contacts was created earlier")
 
-    try:
-        # create users
-        command = "CREATE TABLE `users` (" \
-                  "`login` varchar(32) NOT NULL," \
-                  "`password` varchar(32) NOT NULL," \
-                  "`date_of_birth` date NOT NULL," \
-                  "`id` int NOT NULL AUTO_INCREMENT," \
-                  "PRIMARY KEY (`id`)" \
-                  ")"
-        cur.execute(command)
-        connection.commit()
-    except:
-        print("Table users was created earlier")
 
     cur.execute("SHOW TABLES")
 
