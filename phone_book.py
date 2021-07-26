@@ -59,20 +59,14 @@ class phonebook():
         self.sub_widgets[5].ui.comboBox.activated[int].connect(self.chooseEditContact)
 
     def birthMessage(self):
-        print(123123123123)
-        print(self.personal_data.json_form)
         command = "SELECT * FROM phone_contacts " \
                   "WHERE DATE_FORMAT(date_of_birth, '%m-%d')<=DATE_FORMAT(CURDATE() + INTERVAL 7 DAY, '%m-%d') " \
                   "AND DATE_FORMAT(date_of_birth, '%m-%d')>=DATE_FORMAT(CURDATE(), '%m-%d') " \
                   "AND user_id = " + str(self.personal_data.json_form['id'])
-        print(command)
         birth_contacts = self.database_phone_book.takeSelectCommand(command)
-        print(birth_contacts)
 
         if len(birth_contacts)!=0:
-            print(birth_contacts)
             message = QtWidgets.QMessageBox()
-            # message.resize(1000,300)
             message.setWindowTitle("Дни рождения:")
             text = "Дни рождения на этой неделе: \n"
             for birth_contact in birth_contacts:
