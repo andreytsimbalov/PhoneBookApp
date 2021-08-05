@@ -1,31 +1,30 @@
 # Phone Book Application
 
-Записная книжка пользователя: позволяет хранить список контактов, телефонные номера и дни рождения.
+User Notebook: Allows you to store your contact list, phone numbers and birthdays.
 
-## Руководство по установке
+## Installation guide
 
-Необходимый набор библиотек:
+Required set of libraries:
 - PyQt5
 - mysql-connector-python
 
-Порядок установки:
-1. Открыть **data/mysql_log_pas.json**, ввести данные пользователя *MySql* сервера
-2. Запустить **create_database.py**
+Installation procedure:
+1. Open **data/mysql_log_pas.json**, enter user data *MySql* server
+2. Run **create_database.py**
 
-## Руководство пользователя
+## User's manual
 
-Запустить **main.py**
+Run **main.py**
 
-Перед авторизацией пользователя необходимо зарегистрироваться в приложении.
-Нельзя зарегистрировать нового пользователя, если он уже был создан.
+Before authorizing the user, you need to register in the application.
+You cannot register a new user if one has already been created.
 
-После авторизации пользователя откроется окно контактов записной книжки. При включенном поле *Запомнить меня* авторизация будет производиться автоматически. 
+After the user is authorized, the notebook contacts window will open. If the *Remember me* field is enabled, authorization will be performed automatically.
 
-Записная книжка обладает функционалом:
-- Вывод контактов записной книжки в алфавитном порядке
-- Добавление нового контакта в базу данных. Нельзя добавить контакт, если он уже был создан
-- Редактирование и удаление контакта из базы данных
-- Смена пользователя
-- Функция напоминания о днях рождения контактов на ближайшую неделю
-
+The notebook has the following functionality:
+- Display contacts of the notebook in alphabetical order
+- Adding a new contact to the database. You cannot add a contact if it has already been created
+- Editing and deleting a contact from the database
+- Change user
+- Function of reminders about birthdays of contacts for the next week
 
